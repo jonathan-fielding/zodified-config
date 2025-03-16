@@ -1,0 +1,7 @@
+{
+  "env": "test",
+  "value": "test value",
+  "nested": {
+    "value": "nested value"
+  }
+}
