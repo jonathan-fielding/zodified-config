@@ -39,9 +39,11 @@ declare module 'zodified-config' {
   interface ValidatedConfig extends Config {}
 }
 
-const configResult = config.validate(configSchema);
-if (configResult instanceof Error) {
-  // if you enter here, it means the config is invalid
+try {
+  zodifiedConfig.validate(invalidSchema);
+} catch (error: unknown) {
+  // if you enter here, it means the config is invalid or something else went wrong
+  // check the error.message
 }
 ```
 

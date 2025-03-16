@@ -9,11 +9,14 @@ const validate = <T extends z.ZodType>(schema: T) => {
   try {
     const result = schema.safeParse(config);
     if (result.success === false) {
-      return new Error("INVALID_CONFIG");
+      throw new Error("INVALID_CONFIG");
     }
     return true;
-  } catch {
-    return new Error('UNEXPECTED_ERROR');
+  } catch (error: unknown) {
+    if (error instanceof Error && error.message === 'INVALID_CONFIG') {
+      throw error;
+    }
+    throw new Error('UNEXPECTED_ERROR');
   }
 };
 

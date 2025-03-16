@@ -17,9 +17,12 @@ describe('validate', () => {
 
   it('should return false if schema is invalid', () => {
     const invalidSchema = z.object({ value: z.number(), env: z.literal('test') });
-    const result = zodifiedConfig.validate(invalidSchema);
-    if (result instanceof Error) {
-      expect(result.message).toBe("INVALID_CONFIG");
+    try {
+      zodifiedConfig.validate(invalidSchema);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        expect(error.message).toBe('INVALID_CONFIG');
+      }
     }
   });
 });
