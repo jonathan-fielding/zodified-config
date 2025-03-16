@@ -2,7 +2,7 @@
   "name": "zodfig",
   "version": "1.0.0",
   "description": "Typesafe config validated by Zod",
-  "repository": "https://github.com/jonathan-fielding/zodfig",
+  "repository": "git+https://github.com/jonathan-fielding/zodfig.git",
   "license": "MIT",
   "author": "Jonathan Fielding <jonathan-fielding@users.noreply.github.com>",
   "engines": {
