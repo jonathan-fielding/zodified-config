@@ -1,20 +1,20 @@
-# Zodfig
+# Zodified Config
 
 Typesafe config validated by Zod 🎉
 
 ## Install
 
-You can install `zodfig` from NPM using your prefered package manage. 
+You can install `zodified-config` from NPM using your prefered package manage. 
 
 For npm you can install as follows:
 
 ```
-npm i zodfig
+npm i zodified-config
 ```
 
 ## Usage
 
-To use Zodfig, please follow the 3 steps explained below:
+To use zodified-config, please follow the 3 steps explained below:
 
 ### 1. Defining your schema
 ```ts
@@ -32,10 +32,10 @@ export type Config = z.infer<typeof configSchema>;
 
 ```ts
 // src/index.ts
-import config from 'zodfig'
+import config from 'zodified-config'
 import type { Config } from './schema'
 
-declare module 'zodfig' {
+declare module 'zodified-config' {
   interface ValidatedConfig extends Config {}
 }
 
@@ -48,7 +48,7 @@ if (configResult instanceof Error) {
 ### 3. Accessing configuration values
 ```ts
 // file other.ts
-import config from 'zodfig'
+import config from 'zodified-config'
 
 config.get('value'); 
 ```

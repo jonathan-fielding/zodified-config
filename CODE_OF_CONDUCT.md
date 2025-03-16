@@ -1,4 +1,4 @@
-# Code of Conduct - Zodfig
+# Code of Conduct - Zodified Config
 
 ## Our Pledge
 

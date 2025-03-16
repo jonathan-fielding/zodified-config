@@ -1,8 +1,8 @@
 {
-  "name": "zodfig",
+  "name": "zodified-config",
   "version": "1.0.0",
   "description": "Typesafe config validated by Zod",
-  "repository": "git+https://github.com/jonathan-fielding/zodfig.git",
+  "repository": "git+https://github.com/jonathan-fielding/zodified-config.git",
   "license": "MIT",
   "author": "Jonathan Fielding <jonathan-fielding@users.noreply.github.com>",
   "engines": {
