@@ -1,4 +1,4 @@
-import zodifiedConfig from '../src/index';
+import zodifiedConfig, { ZodValidationError } from '../src/index';
 import z from 'zod';
 
 const configSchema = z.object({ value: z.string(), env: z.literal('test'), nested: z.object({ value: z.string() }) });
@@ -20,8 +20,17 @@ describe('validate', () => {
     try {
       zodifiedConfig.validate(invalidSchema);
     } catch (error: unknown) {
-      if (error instanceof Error) {
+      if (error instanceof ZodValidationError) {
         expect(error.message).toBe('INVALID_CONFIG');
+        expect(error.failures).toBeDefined();
+        expect(error.failures).toHaveLength(1);
+        expect(error.failures[0].path).toEqual(['value']);
+        expect(error.failures[0].code).toBe('invalid_type');
+        if (error.failures[0].code === 'invalid_type') {
+          expect(error.failures[0].expected).toBe('number');
+          expect(error.failures[0].received).toBe('string');
+          expect(error.failures[0].message).toBe('Expected number, received string');
+        }
       }
     }
   });

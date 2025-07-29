@@ -1,15 +1,25 @@
 import config from 'config';
 import type z from 'zod';
+import { ZodIssue } from 'zod';
 
 export interface ValidatedConfig {}
 
 const fullConfig = config.util.toObject();
 
+export class ZodValidationError extends Error {
+  failures: ZodIssue[];
+  constructor(message: string, failures: ZodIssue[]) {
+    super(message);
+    this.name = 'ZodValidationError';
+    this.failures = failures;
+  }
+}
+
 const validate = <T extends z.ZodType>(schema: T) => {
   try {
     const result = schema.safeParse(config);
     if (result.success === false) {
-      throw new Error("INVALID_CONFIG");
+      throw new ZodValidationError('INVALID_CONFIG', result.error.errors);
     }
     return true;
   } catch (error: unknown) {
