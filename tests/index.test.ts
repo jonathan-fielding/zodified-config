@@ -28,8 +28,8 @@ describe('validate', () => {
         expect(error.failures[0].code).toBe('invalid_type');
         if (error.failures[0].code === 'invalid_type') {
           expect(error.failures[0].expected).toBe('number');
-          expect(error.failures[0].received).toBe('string');
-          expect(error.failures[0].message).toBe('Expected number, received string');
+          expect(error.failures[0].path[0]).toBe('value');
+          expect(error.failures[0].message).toBe('Invalid input: expected number, received string');
         }
       }
     }

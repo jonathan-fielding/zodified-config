@@ -19,7 +19,7 @@ const validate = <T extends z.ZodType>(schema: T) => {
   try {
     const result = schema.safeParse(config);
     if (result.success === false) {
-      throw new ZodValidationError('INVALID_CONFIG', result.error.errors);
+      throw new ZodValidationError('INVALID_CONFIG', result.error.issues);
     }
     return true;
   } catch (error: unknown) {
