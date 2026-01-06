@@ -25,7 +25,9 @@ jobs:
           node-version: '22.x'
 
       - name: Create .npmrc
-        run: echo "registry=https://registry.npmjs.org/" > .npmrc
+        run: |
+          echo "registry=https://registry.npmjs.org/" > .npmrc
+          echo "//registry.npmjs.org/:_authToken=dummy" >> .npmrc
 
       - name: Install Dependencies
         run: npm ci
