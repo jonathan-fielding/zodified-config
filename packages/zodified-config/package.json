@@ -1,6 +1,6 @@
 {
   "name": "zodified-config",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Typesafe config validated by Zod",
   "repository": {
     "type": "git",
