@@ -27,6 +27,10 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Create .npmrc for OIDC
+        run: |
+          echo "//registry.npmjs.org/:_authToken=dummy" > .npmrc
+
       - name: Build
         run: npm run build
 
