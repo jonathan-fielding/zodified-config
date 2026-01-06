@@ -1,5 +1,11 @@
 # zodified-config-esm
 
+## 2.1.1
+
+### Patch Changes
+
+- 9268a95: Add missing readme
+
 ## 2.1.0
 
 ### Minor Changes
