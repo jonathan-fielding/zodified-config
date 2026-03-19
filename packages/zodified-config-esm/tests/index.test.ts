@@ -36,6 +36,28 @@ describe('validate', () => {
   });
 });
 
+describe('validate with strict schemas', () => {
+  it('should pass validation with z.record() on nested objects', () => {
+    const strictSchema = z.object({
+      value: z.string(),
+      env: z.literal('test'),
+      nested: z.record(z.string(), z.string()),
+    });
+    const result = zodifiedConfig.validate(strictSchema);
+    expect(result).toBe(true);
+  });
+
+  it('should pass validation with z.strictObject()', () => {
+    const strictSchema = z.strictObject({
+      value: z.string(),
+      env: z.literal('test'),
+      nested: z.strictObject({ value: z.string() }),
+    });
+    const result = zodifiedConfig.validate(strictSchema);
+    expect(result).toBe(true);
+  });
+});
+
 describe('get', () => {
   it('should return the full config', () => {
     const result = zodifiedConfig.get();

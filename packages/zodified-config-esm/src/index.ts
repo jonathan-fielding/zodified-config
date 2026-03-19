@@ -17,7 +17,7 @@ export class ZodValidationError extends Error {
 
 const validate = <T extends z.ZodType>(schema: T) => {
   try {
-    const result = schema.safeParse(config);
+    const result = schema.safeParse(fullConfig);
     if (result.success === false) {
       throw new ZodValidationError('INVALID_CONFIG', result.error.issues);
     }
