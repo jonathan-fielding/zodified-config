@@ -1,5 +1,11 @@
 # zodified-config-esm
 
+## 2.1.2
+
+### Patch Changes
+
+- cf45995: Fix issue where external config proprties impact the object validation
+
 ## 2.1.1
 
 ### Patch Changes
